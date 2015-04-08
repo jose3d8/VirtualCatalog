@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteVC.master.cs" Inherits="VirtualCatalog.SiteVC" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Css/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <%--<form runat="server">--%>
+
+    <div id="container">
+        <header>
+            <h1>
+                <a><img id="introimg" src="images/img.jpg" /></a>
+            </h1>
+        </header>
+
+        <nav>
+            <%--MENU--%>
+            <ul>
+                <li class="start"><a href="Default.aspx">Inicio</a></li>
+                <li><a href="#">Registros</a></li>
+                <li><a href="#">Consultas</a></li>
+                <li><a href="#">Catalogo</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+
+
+        <div id="body">
+            <%--CUERPO DE LA MASTER PAGE--%>
+            <section id="content">
+
+                <article>
+                    <form id="form1" runat="server">
+
+                        <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </form>
+                </article>
+
+
+            </section>
+
+            <aside class="sidebar">
+
+                <ul>
+                    <li>
+                        <h4>Registros</h4>
+                        <ul>
+                            <li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registros/rClientes.aspx">Clientes</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Registros/rOfertas.aspx">Ofertas</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Registros/rProductos.aspx">Productos</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Registros/rRutas.aspx">Rutas</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Registros/rUsuarios.aspx">Usuarios</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Registros/rVentas.aspx">Ventas</asp:HyperLink></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <h4>Consultas</h4>
+                        <ul>
+                            <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Consultas/cClientes.aspx">Clientes</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Consultas/cOfertas.aspx">Ofertas</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Consultas/cProductos.aspx">Productos</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Consultas/cRutas.aspx">Rutas</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Consultas/cUsuarios.aspx">Usuarios</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/Consultas/cVentas.aspx">Ventas</asp:HyperLink></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </aside>
+            <div class="clear"></div>
+        </div>
+        <%--FIN CUERPO DE LA MASTER PAGE--%>
+        <footer>
+
+            <div class="footer-content">
+                <p>Copyright &copy; 2015, designed by JADJF | <a href="#">Privacy Policy</a></p>
+            </div>
+            <div class="footer-bottom"></div>
+
+        </footer>
+    </div>
+    <%--container--%>
+</body>
+</html>
