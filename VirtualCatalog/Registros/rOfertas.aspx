@@ -35,8 +35,9 @@
                     <label class="col-md-2 control-label input-sm" for="IdProductoLabel" style="color: Black">
                         IdProducto</label>
                     <div class="col-lg-9">
-                        <asp:DropDownList ID="IdProductoDropDownList" runat="server" CssClass="form-control input-sm" Height="18px" Width="128px" DataSourceID="SqlDataSource1" DataTextField="IdProducto" DataValueField="IdProducto"></asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [IdProducto] FROM [Productos]"></asp:SqlDataSource>
+                        <asp:DropDownList ID="IdProductoDropDownList" runat="server" CssClass="form-control input-sm" Height="18px" Width="132px">
+                            <asp:ListItem>IdProducto</asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                 </div>
             </div>

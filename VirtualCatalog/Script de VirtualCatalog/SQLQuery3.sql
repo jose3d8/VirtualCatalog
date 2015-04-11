@@ -46,7 +46,7 @@ IdUsuario int  identity(1,1) primary key,
  IdProducto int identity(1,1) primary key,
  Descripcion varchar (100),
  Precio float,
- Existencia int,
+ Existencia float,
  );
 
  Create table Ofertas (

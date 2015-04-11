@@ -13,8 +13,8 @@ namespace BLL
     {
         public int IdProducto { set; get; }
         public string Descripcion { set; get; }
-        public float Precio { set; get; }
-        public int Existencia { set; get; }
+        public double Precio { set; get; }
+        public double Existencia { set; get; }
 
         public Productos()
         {
@@ -25,8 +25,7 @@ namespace BLL
         {
             ConexionDb conexion = new ConexionDb();
             bool paso = false;
-            paso = conexion.EjecutarDB("Insert into Productos(Descripcion,Precio,Existencia) values('"
-            + Descripcion + "','" + Precio + "'," + Existencia + "')");
+            paso = conexion.EjecutarDB("Insert into Productos (Descripcion,Precio,Existencia) values('" + Descripcion + "','" + Precio + "','" + Existencia + "')");
             return paso;
         }
 
@@ -38,10 +37,10 @@ namespace BLL
             return paso;
         }
 
-        public bool Eliminar()
+        public static bool Eliminar(int IdProducto)
         {
             ConexionDb conexion = new ConexionDb();
-            return conexion.EjecutarDB("Delete From Productos Where IdProducto + " + IdProducto);
+            return conexion.EjecutarDB("Delete From Productos Where IdProducto = " + IdProducto);
         }
 
         public bool Buscar()
@@ -55,8 +54,8 @@ namespace BLL
                 Retorno = true;
                 this.IdProducto = (int)dt.Rows[0]["IdProducto"];
                 this.Descripcion = (string)dt.Rows[0]["Descripcion"];
-                this.Precio = (float)dt.Rows[0]["Precio"];
-                this.Existencia = (int)dt.Rows[0]["Existencia"];
+                this.Precio = (double)dt.Rows[0]["Precio"];
+                this.Existencia = (double)dt.Rows[0]["Existencia"];
             }
 
             return Retorno;

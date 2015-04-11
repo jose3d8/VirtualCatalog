@@ -23,8 +23,6 @@
                         IdProducto</label>
                     <div class="col-lg-9">
                         <asp:TextBox ID="IdTextBox" runat="server" CssClass="form-control input-sm" TextMode="Number"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="IdTextBox" ErrorMessage="Introdusca un Id valido" ForeColor="Red" SetFocusOnError="true">*
-                        </asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -33,7 +31,7 @@
                     <label class="col-md-2 control-label input-sm" for="DescripcionLabel" style="color: Black">
                         Descripcion</label>
                     <div class="col-lg-9">
-                        <asp:TextBox ID="DescripcionTextBox" runat="server" MaxLength="100" Width="532px"></asp:TextBox>
+                        <asp:TextBox ID="DescripcionTextBox" runat="server" MaxLength="100" Width="263px" Height="61px" TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DescripcionTextBox" ErrorMessage="Introdusca una Descripcion" ForeColor="Red" SetFocusOnError="true">*
                         </asp:RequiredFieldValidator>
                     </div>

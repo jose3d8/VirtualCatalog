@@ -11,15 +11,14 @@ namespace VirtualCatalog.Consultas
     public partial class cUsuarios : System.Web.UI.Page
     {
         Usuarios usuario = new Usuarios();
-        string Campos = "IdUsuario,Nombre,Email,esActivo";
+        string Campos = "IdUsuario, Nombre, Email, esActivo";
         string Filtro = "1=1";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BuscarGridView.DataSource = usuario.Listar(Campos, Filtro);
-                BuscarGridView.DataBind();
+                Buscargrip();
             }
         }
 
@@ -27,12 +26,18 @@ namespace VirtualCatalog.Consultas
         {
             if (BuscarDropDownList.SelectedIndex == 0)
             {
-                Filtro += "and Id like '%" + BuscarTextBox.Text + "%'";
+                Filtro += "and IdUsuario like '%" + BuscarTextBox.Text + "%'";
             }
             if (BuscarDropDownList.SelectedIndex == 1)
             {
-                Filtro += "and Nombre like '%'" + BuscarTextBox.Text + "%'";
+                Filtro += "and Nombre like '%" + BuscarTextBox.Text + "%'";
             }
+
+            Buscargrip();
+        }
+
+        private void Buscargrip()
+        {
             BuscarGridView.DataSource = usuario.Listar(Campos, Filtro);
             BuscarGridView.DataBind();
         }

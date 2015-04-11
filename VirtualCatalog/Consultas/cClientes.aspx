@@ -34,7 +34,7 @@
             <td colspan="4">
                 <asp:GridView ID="BuscarGridView" runat="server">
                     <Columns>
-                        <asp:HyperLinkField DataNavigateUrlFields="IdCliente" DataNavigateUrlFormatString="~/Registros/rClientes.aspx" Text="Edit" />
+                        <asp:HyperLinkField DataNavigateUrlFields="IdCliente" DataNavigateUrlFormatString="~/Registros/rClientes.aspx?IdCliente={0}" Text="Edit" />
                         <asp:HyperLinkField DataNavigateUrlFields="IdCliente" DataNavigateUrlFormatString="~/Registros/rClientes.aspx" Text="New" />
                     </Columns>
                 </asp:GridView>

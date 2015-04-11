@@ -14,18 +14,12 @@
         </div>
         <div class=" panel-body">
 
-            <%--Celular--%>
+            <%--IdCliente--%>
             <div class=" form-horizontal col-md-12" role="form">
                 <div class="form-group">
                     <label class="col-md-2 control-label input-sm" for="IdClienteLabel" style="color: Black">IdCliente</label>
                     <div class="col-lg-9">
-                        <asp:TextBox ID="IdTextBox" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                            ControlToValidate="IdTextBox" 
-                            ErrorMessage="Introdusca un Id valido" 
-                            ForeColor="Red" 
-                            SetFocusOnError="true">* 
-                        </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="IdTextBox" runat="server" CssClass="form-control input-sm" Width="68px"></asp:TextBox>
                     </div>
                 </div>
 
@@ -124,7 +118,7 @@
                             ControlToValidate="FechaIngresoTextBox" 
                             ErrorMessage="fecha invalida"
                             ForeColor="Red"  
-                            ValidationExpression="^(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)[0-9]{2}$"
+                            ValidationExpression="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$"
                             SetFocusOnError="True" Display="Dynamic">*
                         </asp:RegularExpressionValidator>
                     </div>

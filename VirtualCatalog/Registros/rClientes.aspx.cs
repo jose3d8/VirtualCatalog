@@ -105,7 +105,7 @@ namespace VirtualCatalog.Registros
             llenaclase(cliente);
             if (Convert.ToBoolean(Session["Modificando"]) == false)
             {
-                if (cliente.Insertar() )
+                if (cliente.Insertar())
                 {
                     MsjLabel.ForeColor = System.Drawing.Color.Green;
                     MsjLabel.Text = "Registro realizado con exito";
@@ -140,8 +140,8 @@ namespace VirtualCatalog.Registros
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-            Clientes cliente = new Clientes();
-            if (cliente.Eliminar() == true)
+            
+            if (Clientes.Eliminar(int.Parse(Request.QueryString["IdCliente"])))
             {
                 MsjLabel.ForeColor = System.Drawing.Color.Green;
                 MsjLabel.Text = "Cliente Eliminado Correctamente";

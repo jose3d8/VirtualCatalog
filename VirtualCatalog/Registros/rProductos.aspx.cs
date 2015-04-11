@@ -32,6 +32,7 @@ namespace VirtualCatalog.Registros
                 {
                     ClearButton.Visible = true;
                     SaveButton.Visible = true;
+                    IdTextBox.Visible = true;
                     IdTextBox.Text = IdProducto.ToString();
                 }
                 if (producto.Buscar())
@@ -47,8 +48,8 @@ namespace VirtualCatalog.Registros
         {
             IdTextBox.Text = Convert.ToString(IdTextBox.Text);
             DescripcionTextBox.Text = producto.Descripcion;
-            PrecioTextBox.Text = Convert.ToString(PrecioTextBox.Text);
-            ExistenciaTextBox.Text = Convert.ToString(ExistenciaTextBox.Text);
+            PrecioTextBox.Text = producto.Precio.ToString();
+            ExistenciaTextBox.Text = producto.Existencia.ToString();
 
             if (producto.IdProducto != null)
             {
@@ -63,8 +64,8 @@ namespace VirtualCatalog.Registros
         private void llenaclase(Productos producto)
         {
             producto.Descripcion = DescripcionTextBox.Text;
-            producto.Precio = Convert.ToSingle(PrecioTextBox.Text);
-            producto.Existencia = Convert.ToInt32(ExistenciaTextBox.Text);
+            producto.Precio = double.Parse(PrecioTextBox.Text);
+            producto.Existencia = double.Parse(ExistenciaTextBox.Text);
         }
 
         private void limpiacampos()
@@ -85,42 +86,43 @@ namespace VirtualCatalog.Registros
         {
             Productos producto = new Productos();
             llenaclase(producto);
-            if (producto.Insertar())
+            if (Convert.ToBoolean(Session["Modificando"]) == false)
             {
-                MsjLabel.ForeColor = System.Drawing.Color.Green;
-                MsjLabel.Text = "Registro realizado con exito";
-                limpiacampos();
-            }
-            else
-            {
-                MsjLabel.ForeColor = System.Drawing.Color.Red;
-                MsjLabel.Text = "Error de registro";
-            }
-            if (Request.QueryString["IdProducto"] != null)
-            {
-                producto.IdProducto = int.Parse(Request.QueryString["IdProducto"]);
                 if (producto.Insertar())
                 {
+                    MsjLabel.ForeColor = System.Drawing.Color.Green;
+                    MsjLabel.Text = "Registro realizado con exito";
                     limpiacampos();
-                    Response.Write("Se ha Guardado Correctamente");
                 }
                 else
-                    if (producto.Modificar())
+                {
+                    MsjLabel.ForeColor = System.Drawing.Color.Red;
+                    MsjLabel.Text = "Error de registro";
+                }
+                if (Request.QueryString["IdProducto"] != null)
+                {
+                    producto.IdProducto = int.Parse(Request.QueryString["IdProducto"]);
+                    if (producto.Insertar())
                     {
-                        Response.Redirect("cProductos.aspx");
+                        limpiacampos();
+                        Response.Write("Se ha Guardado Correctamente");
                     }
                     else
-                    {
-                        Response.Write("No se pudo Modificar");
-                    }
-
+                        if (producto.Modificar())
+                        {
+                            Response.Redirect("cProductos.aspx");
+                        }
+                        else
+                        {
+                            Response.Write("No se pudo Modificar");
+                        }
+                }
             }
         }
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-            Productos producto = new Productos();
-            if (producto.Eliminar() == true)
+            if (Productos.Eliminar(int.Parse(Request.QueryString["IdProducto"])))
             {
                 MsjLabel.ForeColor = System.Drawing.Color.Green;
                 MsjLabel.Text = "Producto Eliminado Correctamente";

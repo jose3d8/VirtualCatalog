@@ -11,23 +11,28 @@ namespace VirtualCatalog.Consultas
     public partial class cProductos : System.Web.UI.Page
     {
         Productos producto = new Productos();
-        string Campos = "IdProducto,Descripcion,Precio,Existencia";
+        string Campos = "IdProducto, Descripcion, Precio, Existencia";
         string Filtro = "1=1";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BuscarGridView.DataSource = producto.Listar(Campos, Filtro);
-                BuscarGridView.DataBind();
+                Buscargrip();
             }
         }
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             if (BuscarDropDownList.SelectedIndex == 0)
             {
-                Filtro += "and Id like '%" + BuscarTextBox.Text + "%'";
-            }   
+                Filtro += "and IdProducto like '%" + BuscarTextBox.Text + "%'";
+            }
+
+            Buscargrip();
+        }
+
+        private void Buscargrip()
+        {
             BuscarGridView.DataSource = producto.Listar(Campos, Filtro);
             BuscarGridView.DataBind();
         }

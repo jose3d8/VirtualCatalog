@@ -28,8 +28,6 @@ namespace BLL
         {
             ConexionDb conexion = new ConexionDb();
             bool accion = false;
-
-            //this.IdUsuario = (int)conexion.ObtenerValorDb("Insert into Usuarios(Nombre,Clave,Email,esActivo) values('" + Nombre + "','" + Clave + "','" + Email + "','" + esActivo + "') Select @@Identity");
             accion = conexion.EjecutarDB("Insert into Usuarios(Nombre,Clave,Email,esActivo) values('" + Nombre + "','" + Clave + "','" + Email + "','" + esActivo + "')");
             return accion;
         }
@@ -43,21 +41,21 @@ namespace BLL
 
         }
 
-        public bool Eliminar(int prmIdUsuario)
+        public static bool Eliminar(int IdCliente)
         {
             ConexionDb conexion = new ConexionDb();
             bool accion = false;
-            accion = conexion.EjecutarDB("Delete from Usuarios where IdUsuario = " + prmIdUsuario);
+            accion = conexion.EjecutarDB("Delete from Usuarios where IdUsuario = " + IdCliente);
             return accion;
         }
 
-        public bool Buscar(int prmUsuario)
+        public bool Buscar( int IdUsuario)
         {
             bool Retorno = false;
             DataTable Datos = new DataTable();
             ConexionDb conexion = new ConexionDb();
 
-            Datos = conexion.BuscarDb("Select * from Usuarios where IdUsuario = " + prmUsuario);
+            Datos = conexion.BuscarDb("Select * from Usuarios where IdUsuario = " + IdUsuario);
             if (Datos.Rows.Count > 0)
             {
                 Retorno = true;
@@ -71,6 +69,25 @@ namespace BLL
             return Retorno;
         }
 
+        public bool Buscar()
+        {
+            bool Retorno = false;
+            DataTable dt = new DataTable();
+            ConexionDb conexion = new ConexionDb();
+
+            Datos = conexion.BuscarDb("Select * from Usuarios where IdUsuario = " + IdUsuario);
+            if (dt.Rows.Count > 0)
+            {
+                Retorno = true;
+                this.IdUsuario = (int)dt.Rows[0]["IdUsuario"];
+                this.Nombre = (string)dt.Rows[0]["Nombre"];
+                this.Clave = (string)dt.Rows[0]["Clave"];
+                this.Email = (string)dt.Rows[0]["Email"];
+                this.esActivo = (bool)dt.Rows[0]["esActivo"];
+            }
+
+            return Retorno;
+        }
         public DataTable Listar(string Campos, string Filtro)
         {
             ConexionDb conexion = new ConexionDb();
@@ -84,7 +101,7 @@ namespace BLL
             ConexionDb conexion = new ConexionDb();
             Boolean paso = false;
             DataTable Datos = new DataTable();
-            Datos = conexion.BuscarDb("Select * from Usuarios where Nombre = '" + Nombre + "'");
+            Datos = conexion.BuscarDb("Select * from Usuarios where Nombre = '" + Nombre);
 
             if (Datos.Rows.Count > 0)
             {

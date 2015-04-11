@@ -43,7 +43,7 @@ namespace BLL
             return accion;
         }
 
-        public bool Eliminar()
+        public static bool Eliminar(int IdCliente)
         {
             ConexionDb conexion = new ConexionDb();
             return conexion.EjecutarDB("Delete From Clientes Where IdCliente = " + IdCliente);
@@ -74,7 +74,7 @@ namespace BLL
         {
             ConexionDb conexion = new ConexionDb();
             DataTable dt = new DataTable();
-            dt = conexion.BuscarDb("Select " + Campos + " From Clientes Where" + Filtro);
+            dt = conexion.BuscarDb("Select " + Campos + " From Clientes Where " + Filtro);
             return dt;
         }
     }

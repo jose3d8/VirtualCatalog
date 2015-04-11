@@ -36,7 +36,7 @@ namespace VirtualCatalog.Registros
                     IdTextBox.Visible = true;
                     IdTextBox.Text = IdUsuario.ToString();
                 }
-                if (usuario.Buscar(IdUsuario))
+                if (usuario.Buscar())
                 {
                     llenacampo(usuario);
 
@@ -125,7 +125,7 @@ namespace VirtualCatalog.Registros
                     else
                         if (usuario.Modificar())
                         {
-                            Response.Redirect("ConsultaUsuario.aspx");
+                            Response.Redirect("cUsuarios.aspx");
                         }
                         else
                         {
@@ -139,8 +139,7 @@ namespace VirtualCatalog.Registros
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-            Usuarios usuario = new Usuarios();
-            if (usuario.Eliminar(' ') == true)
+            if (Usuarios.Eliminar(int.Parse(Request.QueryString["IdUsuario"])))
             {
                 MsjLabel.ForeColor = System.Drawing.Color.Green;
                 MsjLabel.Text = "Usuario Eliminado Correctamente";

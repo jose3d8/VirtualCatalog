@@ -19,13 +19,7 @@
                 <div class="form-group">
                     <label for="IdUsuarioLabel" class="col-md-2 control-label input-sm" style="color: Black">IdUsuario</label>
                     <div class="col-lg-9">
-                        <asp:TextBox ID="IdTextBox" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                            ControlToValidate="IdTextBox"
-                            ErrorMessage="Introdusca un Id valido"
-                            ForeColor="Red"
-                            SetFocusOnError="true">*
-                        </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="IdTextBox" runat="server" CssClass="form-control input-sm" Width="64px"></asp:TextBox>
                     </div>
                 </div>
 

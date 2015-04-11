@@ -62,7 +62,7 @@ namespace VirtualCatalog.Registros
 
         private void llenaclase(Ofertas oferta)
         {
-            oferta.IdProducto = Convert.ToInt32(IdProductoDropDownList.Text);
+            oferta.IdProducto = Convert.ToInt32(IdProductoDropDownList.SelectedValue);
             oferta.PrecioOferta = Convert.ToSingle(PrecioOfertaTextBox.Text);
         }
 
